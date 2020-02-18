@@ -8,9 +8,9 @@ import arrow
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('jumun-8151173be58f.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('gjhelper-cc7069273059.json', scope)
 client = gspread.authorize(creds)
-doc = client.open_by_url('https://docs.google.com/spreadsheets/d/15p6G4jXmHw7Z_iRCYeFwRzkzLxqf-3Pj0c6FeVuFYBM')
+doc = client.open_by_url('https://docs.google.com/spreadsheets/d/1PA2WP-aQ-d8TlGubOSpUJwHoH8VZfiTwIFPO3eYGnIs')
 sheet1 = doc.worksheet('재고주문')
 client = discord.Client()
 @client.event
@@ -40,7 +40,7 @@ async def on_message(message):
 
     if message.content.startswith('!그레이드'):
         gc = gspread.authorize(creds)
-        wks = gc.open('오전재고').worksheet('그레이드')
+        wks = gc.open('GJ재고관리').worksheet('그레이드')
         result = wks.acell('B1').value
         embed1 = discord.Embed(
             title = ' 파트너 그레이드 안내!! ',
@@ -61,7 +61,7 @@ async def on_message(message):
         curruntTime = datetime.datetime.now() + datetime.timedelta(hours = 9)
         krnow = curruntTime.strftime('%Y/%m/%d %H:%M')
         gc = gspread.authorize(creds)
-        wks = gc.open('오전재고').worksheet('재고주문')
+        wks = gc.open('GJ재고관리').worksheet('재고주문')
         wks.insert_row([krnow, message.channel.name, message.author.display_name, message.content[4:]], 3)
         embed1 = discord.Embed(
             title = message.author.display_name + "님 의 주문 ",
@@ -106,7 +106,7 @@ async def on_message(message):
 	
 	
     if message.content.startswith('!공지'):
-         if message.author.id == '315237238940106754' :
+         if message.author.id == '315237238940106754' :  # 관리자아이디
              embed = discord.Embed(    
                  title = "📌 공지사항",
                  description= '```' + message.content[4:] + '```',
