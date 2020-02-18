@@ -106,8 +106,8 @@ async def on_message(message):
 	
 	
     if message.content.startswith('!공지'):
-        message.author = member
-        if member.roles.name == "관리자" :  # 관리자역할
+       # message.author = member
+        if server.roles.name == "관리자" :  # 관리자역할
             embed = discord.Embed(    
                 title = "📌 공지사항",
                 description= '```' + message.content[4:] + '```',
