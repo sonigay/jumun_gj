@@ -53,7 +53,7 @@ async def on_message(message):
             color=0x00ffff
             )
         await client.send_message(message.channel, embed=embed1)
-	await client.send_message(client.get_channel("679369629172498474"), embed=embed2)
+        await client.send_message(client.get_channel("679369629172498474"), embed=embed2)
 
 
     if message.content.startswith('!주문'):
