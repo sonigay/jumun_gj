@@ -113,8 +113,8 @@ async def on_message(message):
                 description= '```' + message.content[4:] + '```',
                 color=0xFF0000	
                 )
-            await client.send_message(client.get_channel("667707237623660569"), embed=embed)
-            await client.send_message(client.get_channel("667239441307533312"), embed=embed)
+            await client.send_message(client.get_channel("679379752318009352"), embed=embed)
+            await client.send_message(client.get_channel("679402498607546398"), embed=embed)
 
                         
 access_token = os.environ["BOT_TOKEN"]
